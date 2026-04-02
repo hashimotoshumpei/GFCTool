@@ -210,24 +210,24 @@ def analyze_sheet(
 def make_overview_plot(plot_df: pd.DataFrame, sample_name: str) -> go.Figure:
     fig = go.Figure()
     fig.add_trace(go.Scatter(
-        x=plot_df["Retention Time"], y=plot_df["y"],
+        x=plot_df["x"], y=plot_df["y"],
         mode="lines+markers",
         name="raw data",
         hovertemplate="x=%{x}<br>y=%{y}<extra></extra>"
     ))
-    fig.update_layout(title=f"Raw Plot: {sample_name}", xaxis_title="x", yaxis_title="y")
+    fig.update_layout(title=f"Raw Plot: {sample_name}", xaxis_title="Retention Time (min)", yaxis_title="y")
     return fig
 
 
 def make_zoom_plot(zoom_df: pd.DataFrame, sample_name: str) -> go.Figure:
     fig = go.Figure()
     fig.add_trace(go.Scatter(
-        x=zoom_df["Retention Time (min)"], y=zoom_df["y"],
+        x=zoom_df["x"], y=zoom_df["y"],
         mode="lines+markers",
         name="zoomed data",
         hovertemplate="x=%{x}<br>y=%{y}<extra></extra>"
     ))
-    fig.update_layout(title=f"Zoomed Plot: {sample_name}", xaxis_title="x", yaxis_title="y")
+    fig.update_layout(title=f"Zoomed Plot: {sample_name}", xaxis_title="Retention Time (min)", yaxis_title="y")
     return fig
 
 
