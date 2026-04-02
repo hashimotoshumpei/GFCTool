@@ -396,8 +396,8 @@ if uploaded_file is not None:
                 use_container_width=True
             )
 
-            # 表示
-            st.dataframe(display_df, use_container_width=True)
+
+            
             c1, c2 = st.columns(2)
             with c1:
                 st.download_button(
