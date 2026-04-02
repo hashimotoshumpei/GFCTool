@@ -319,8 +319,9 @@ with st.sidebar:
     st.subheader("point4 範囲")
     point4_x1 = st.number_input("point4_x1", value=130.0)
     point4_x2 = st.number_input("point4_x2", value=140.0)
-
-uploaded_file = st.file_uploader("Excelファイルをアップロードしてください", type=["xlsx", "xls"])
+    
+st.info("左または上のアップロード欄から Excel ファイルを選んでください。")
+uploaded_file = st.file_uploader("", type=["xlsx", "xls"])
 
 if uploaded_file is not None:
     try:
