@@ -392,17 +392,17 @@ if uploaded_file is not None:
                 st.dataframe(pd.DataFrame(errors), use_container_width=True)
 
             st.subheader("個別サンプルの詳細表示")
-            sample_options = [f"{r.sheet_name} | {r.sample_name}" for r in results]
+            sample_options = [f"{r.sample_name}" for r in results]
             selected_label = st.selectbox("表示するサンプルを選択", sample_options)
             selected_sheet = selected_label.split(" | ")[0]
             selected_result = next(r for r in results if r.sheet_name == selected_sheet)
             selected_ctx = contexts[selected_sheet]
 
             mcol1, mcol2, mcol3, mcol4 = st.columns(4)
-            mcol1.metric("Area 1", f"{selected_result.area1:.4f}")
-            mcol2.metric("Area 2", f"{selected_result.area2:.4f}")
-            mcol3.metric("Area 3", f"{selected_result.area3:.4f}")
-            mcol4.metric("Total Area", f"{selected_result.total_area:.4f}")
+            mcol1.metric("アミロース", f"{selected_result.area1:.4f}")
+            mcol2.metric("長鎖アミロペクチン", f"{selected_result.area2:.4f}")
+            mcol3.metric("短鎖アミロペクチン", f"{selected_result.area3:.4f}")
+            #mcol4.metric("Total Area", f"{selected_result.total_area:.4f}")
 
             scol1, scol2 = st.columns(2)
             with scol1:
