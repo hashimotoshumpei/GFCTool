@@ -373,21 +373,18 @@ if uploaded_file is not None:
                 "sample_name",
                 "ratio1",
                 "ratio2",
-                "ratio3",
-                "area2",
-                "area3"
+                "ratio3"
             ]].copy()
             
-            # 比を計算（ゼロ割り対策付き）
-            display_df["ratio_long_short"] = display_df["area2"] / display_df["area3"].replace(0, np.nan)
+            # 比だけ計算（areaは表示しない）
+            display_df["長鎖/短鎖 比"] = results_df["area2"] / results_df["area3"].replace(0, np.nan)
             
             # 列名変更
             display_df = display_df.rename(columns={
                 "sample_name": "サンプル名",
                 "ratio1": "アミロース (%)",
                 "ratio2": "長鎖アミロペクチン (%)",
-                "ratio3": "短鎖アミロペクチン (%)",
-                "ratio_long_short": "長鎖アミロペクチン/短鎖アミロペクチン比"
+                "ratio3": "短鎖アミロペクチン (%)"
             })
             
             # 表示
