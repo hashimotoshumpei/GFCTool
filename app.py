@@ -172,21 +172,21 @@ def analyze_sheet(
     result = AnalysisResult(
         sheet_name=sheet_name,
         sample_name=sample_name,
-        baseline_x=float(baseline_x),
-        baseline_y_raw=float(baseline_min),
-        point2_x=float(point2_x),
-        point2_y_raw=float(point2_y_raw),
-        point3_x=float(point3_x),
-        point3_y_raw=float(point3_y_raw),
-        point4_x=float(point4_x),
-        point4_y_final=float(point4_y_final),
-        area1=area1,
-        area2=area2,
-        area3=area3,
-        total_area=total_area,
-        area1_abs=area1_abs,
-        area2_abs=area2_abs,
-        area3_abs=area3_abs,
+        #baseline_x=float(baseline_x),
+        #baseline_y_raw=float(baseline_min),
+        #point2_x=float(point2_x),
+        #point2_y_raw=float(point2_y_raw),
+        #point3_x=float(point3_x),
+        #point3_y_raw=float(point3_y_raw),
+        #point4_x=float(point4_x),
+        #point4_y_final=float(point4_y_final),
+        #area1=area1,
+        #area2=area2,
+        #area3=area3,
+        #total_area=total_area,
+        #area1_abs=area1_abs,
+        #area2_abs=area2_abs,
+        #area3_abs=area3_abs,
         ratio1=ratio1,
         ratio2=ratio2,
         ratio3=ratio3,
@@ -210,7 +210,7 @@ def analyze_sheet(
 def make_overview_plot(plot_df: pd.DataFrame, sample_name: str) -> go.Figure:
     fig = go.Figure()
     fig.add_trace(go.Scatter(
-        x=plot_df["x"], y=plot_df["y"],
+        x=plot_df["Retention Time"], y=plot_df["y"],
         mode="lines+markers",
         name="raw data",
         hovertemplate="x=%{x}<br>y=%{y}<extra></extra>"
@@ -222,7 +222,7 @@ def make_overview_plot(plot_df: pd.DataFrame, sample_name: str) -> go.Figure:
 def make_zoom_plot(zoom_df: pd.DataFrame, sample_name: str) -> go.Figure:
     fig = go.Figure()
     fig.add_trace(go.Scatter(
-        x=zoom_df["x"], y=zoom_df["y"],
+        x=zoom_df["Retention Time (min)"], y=zoom_df["y"],
         mode="lines+markers",
         name="zoomed data",
         hovertemplate="x=%{x}<br>y=%{y}<extra></extra>"
