@@ -426,10 +426,17 @@ if uploaded_file is not None:
             selected_ctx = contexts[selected_sheet]
 
             mcol1, mcol2, mcol3, mcol4 = st.columns(4)
-            mcol1.metric("アミロース", f"{selected_result.area1:.4f}")
-            mcol2.metric("長鎖アミロペクチン", f"{selected_result.area2:.4f}")
-            mcol3.metric("短鎖アミロペクチン", f"{selected_result.area3:.4f}")
-            #mcol4.metric("Total Area", f"{selected_result.total_area:.4f}")
+            
+            # 比（ゼロ割り対策）
+            ratio_long_short = (
+                selected_result.area2 / selected_result.area3
+                if selected_result.area3 != 0 else np.nan
+            )
+            
+            mcol1.metric("アミロース (%)", f"{selected_result.ratio1:.1f}")
+            mcol2.metric("長鎖アミロペクチン (%)", f"{selected_result.ratio2:.1f}")
+            mcol3.metric("短鎖アミロペクチン (%)", f"{selected_result.ratio3:.1f}")
+            mcol4.metric("長鎖/短鎖 比", f"{ratio_long_short:.1f}")
 
             scol1, scol2 = st.columns(2)
             with scol1:
