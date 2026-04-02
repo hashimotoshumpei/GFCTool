@@ -320,8 +320,7 @@ with st.sidebar:
     point4_x1 = st.number_input("point4_x1", value=130.0)
     point4_x2 = st.number_input("point4_x2", value=140.0)
     
-st.info("左または上のアップロード欄から Excel ファイルを選んでください。")
-uploaded_file = st.file_uploader("", type=["xlsx", "xls"])
+uploaded_file = st.file_uploader("Excelファイルをドロップまたはアップロード", type=["xlsx", "xls"])
 
 if uploaded_file is not None:
     try:
@@ -436,7 +435,7 @@ if uploaded_file is not None:
             mcol1.metric("アミロース (%)", f"{selected_result.ratio1:.1f}")
             mcol2.metric("長鎖アミロペクチン (%)", f"{selected_result.ratio2:.1f}")
             mcol3.metric("短鎖アミロペクチン (%)", f"{selected_result.ratio3:.1f}")
-            mcol4.metric("長鎖/短鎖 比", f"{ratio_long_short:.1f}")
+            mcol4.metric("長鎖/短鎖 比", f"{ratio_long_short:.3f}")
 
             scol1, scol2 = st.columns(2)
             with scol1:
@@ -466,7 +465,7 @@ if uploaded_file is not None:
                 {"item": "area2_abs", "value": selected_result.area2_abs},
                 {"item": "area3_abs", "value": selected_result.area3_abs},
             ])
-            st.dataframe(detail_df, use_container_width=True)
+            #st.dataframe(detail_df, use_container_width=True)
 
     except Exception as e:
         st.error(f"ファイルの読み込みに失敗しました: {e}")
