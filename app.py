@@ -11,6 +11,15 @@ import streamlit as st
 
 st.set_page_config(page_title="GPC Batch Analyzer", layout="wide")
 
+st.markdown("""
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+</style>
+""", unsafe_allow_html=True)
 
 @dataclass
 class AnalysisResult:
@@ -284,21 +293,20 @@ def to_excel_bytes(results_df: pd.DataFrame) -> bytes:
     return output.getvalue()
 
 
-st.title("ゲルろ過クロマト結果の一括解析アプリ")
+st.title("GFCTool")
 st.write(
-    "Excelファイル内の全シートを順番に処理し、"
-    "sample name の抽出、baseline/point2/point3/point4 の検出、"
-    "補正、面積計算をまとめて行います。"
+    "ゲル濾過クロマトグラフィーの波形データが入ったExcelファイル内の全シートを順番に処理し、"
+    "アミロース/短鎖アミロペクチン/長鎖アミロペクチンの測定結果を出力します。"
 )
 
 with st.sidebar:
-    st.header("解析条件")
-    x_view_min = st.number_input("表示範囲 x_min", value=80.0)
-    x_view_max = st.number_input("表示範囲 x_max", value=190.0)
+    st.header("解析範囲")
+    x_view_min = st.number_input("左端", value=80.0)
+    x_view_max = st.number_input("右端", value=190.0)
 
-    st.subheader("baseline 範囲")
-    baseline_x1 = st.number_input("baseline_x1", value=87.0)
-    baseline_x2 = st.number_input("baseline_x2", value=90.0)
+    st.subheader("ベースライン決定に使う範囲")
+    baseline_x1 = st.number_input("左端", value=87.0)
+    baseline_x2 = st.number_input("右端", value=90.0)
 
     st.subheader("point2 範囲")
     point2_x1 = st.number_input("point2_x1", value=100.0)
