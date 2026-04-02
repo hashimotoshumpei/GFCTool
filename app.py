@@ -386,7 +386,8 @@ if uploaded_file is not None:
                 "ratio2": "長鎖アミロペクチン (%)",
                 "ratio3": "短鎖アミロペクチン (%)"
             })
-            
+            # 小数第1位まで
+            display_df = display_df.round(1)
             # 表示
             st.dataframe(display_df, use_container_width=True)
             c1, c2 = st.columns(2)
