@@ -369,7 +369,19 @@ if uploaded_file is not None:
             results_df = results_to_dataframe(results)
 
             st.subheader("解析結果一覧")
-            st.dataframe(results_df, use_container_width=True)
+            display_df = results_df[[
+                "sample_name",
+                "ratio1",
+                "ratio2",
+                "ratio3"
+            ]].rename(columns={
+                "sample_name": "サンプル名",
+                "ratio1": "アミロース (%)",
+                "ratio2": "長鎖アミロペクチン (%)",
+                "ratio3": "短鎖アミロペクチン (%)"
+            })
+            
+            st.dataframe(display_df, use_container_width=True)
 
             c1, c2 = st.columns(2)
             with c1:
