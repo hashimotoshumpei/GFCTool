@@ -392,7 +392,7 @@ if uploaded_file is not None:
                 st.dataframe(pd.DataFrame(errors), use_container_width=True)
 
             st.subheader("個別サンプルの詳細表示")
-            sample_options = [f"{r.sample_name}" for r in results]
+            sample_options = [f"{r.sheet_name} | {r.sample_name}" for r in results]
             selected_label = st.selectbox("表示するサンプルを選択", sample_options)
             selected_sheet = selected_label.split(" | ")[0]
             selected_result = next(r for r in results if r.sheet_name == selected_sheet)
