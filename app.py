@@ -470,14 +470,14 @@ if uploaded_file is not None:
     except Exception as e:
         st.error(f"ファイルの読み込みに失敗しました: {e}")
 else:
-    st.info("左または上のアップロード欄から Excel ファイルを選んでください。")
-    st.markdown(
-        """
-        ### 使い方
-        1. Excel ファイルをアップロード
-        2. sidebar で各探索範囲を設定
-        3. **全サンプルを解析** をクリック
-        4. 結果一覧と個別グラフを確認
-        5. CSV / Excel で結果を保存
-        """
-    )
+    st.info("Excel ファイルをアップロードしてください。")
+    # st.markdown(
+    #     """
+    #     ### 使い方
+    #     1. Excel ファイルをアップロード
+    #     2. sidebar で各探索範囲を設定
+    #     3. **全サンプルを解析** をクリック
+    #     4. 結果一覧と個別グラフを確認
+    #     5. CSV / Excel で結果を保存
+    #     """
+    # )
